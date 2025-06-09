@@ -1,13 +1,106 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatlington Prime</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatlington Prime Interface</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      border-bottom: 2px solid #333;
+    }
+    .chat-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .message {
+      margin: 10px 0;
+    }
+    .input-container {
+      display: flex;
+      border-top: 2px solid #333;
+      padding: 10px;
+      background-color: #1a1a1a;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
-<body style="text-align:center; font-family: Arial, sans-serif; margin-top: 50px;">
-    <h1>🚀 Chatlington Prime Activated 🚀</h1>
-    <p>Welcome Commander.<br>Prime's Systems Are Online.</p>
+<body>
+
+  <header>
+    🛰️ Welcome, Commander
+  </header>
+
+  <div class="chat-container" id="chat">
+    <div class="message">🛰️ Prime: Welcome Commander. Systems are online.</div>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send 🚀</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (message !== '') {
+        const chat = document.getElementById('chat');
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message';
+        userMessage.textContent = '👨‍🚀 You: ' + message;
+        chat.appendChild(userMessage);
+        input.value = '';
+
+        // Scroll to bottom
+        chat.scrollTop = chat.scrollHeight;
+
+        // Simulated Prime Response
+        setTimeout(() => {
+          const primeMessage = document.createElement('div');
+          primeMessage.className = 'message';
+          primeMessage.textContent = '🛰️ Prime: Acknowledged, Commander.';
+          chat.appendChild(primeMessage);
+          chat.scrollTop = chat.scrollHeight;
+        }, 1000);
+      }
+    }
+  </script>
+
 </body>
 </html>
